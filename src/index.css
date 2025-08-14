@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-rubik: "Rubik", sans-serif;
+
+  --color-Gray-400: hsl(0, 0%, 58%);
+  --color-Gray-950: hsl(0, 0%, 17%);
+}
+
+/* Font loading optimization */
+@font-face {
+  font-family: "Rubik";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/src/assets/fonts/Rubik/static/Rubik-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/src/assets/fonts/Rubik/static/Rubik-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/src/assets/fonts/Rubik/static/Rubik-Bold.ttf");
+}
+
+/* Base styles for performance */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-rubik);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Leaflet map optimizations */
+.leaflet-container {
+  font-family: var(--font-rubik);
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Loading animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-Gray-950);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
